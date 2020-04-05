@@ -12,6 +12,8 @@
 
 + Do not create different files or upload any irrelavant files. You are however free to share some links related to algorithm and code implementation. 
 
++ You can try your code on any IDE and environment. But while uploading, include it in a `.py` script.
+
 I request all the collaborators to be active and respond well to the work. Let us complete the work in 3 days.
 
 *If you have any doubts or issues while running the code, create a new issue.*
