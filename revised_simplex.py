@@ -76,5 +76,5 @@ while(True):
     
     #Checking for optimal solution.
     if(enter[entering_index]>0):
-        print("Optimal solution reached")
+        print("Optimal solution reached =", z[0][0])
         break
