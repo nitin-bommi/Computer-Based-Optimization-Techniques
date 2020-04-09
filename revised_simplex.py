@@ -17,7 +17,7 @@ enter, leave = {}, {}
     
 for i in range(n):
     if i not in index:
-        enter[i] = (np.dot(np.dot(c_trans[:, [2,3,4,5]], B_inv), A[:, [i]]) - c_trans[0][i])
+        enter[i] = (np.dot(np.dot(c_trans[:, index], B_inv), A[:, [i]]) - c_trans[0][i])
     
 entering_index = min(enter.keys(), key=(lambda k: enter[k]))
     
@@ -46,7 +46,7 @@ while(True):
     
     for i in range(n):
         if i not in index:
-            enter[i] = (np.dot(np.dot(c_trans[:, [2,3,4,5]], B_inv), A[:, [i]]) - c_trans[0][i])
+            enter[i] = (np.dot(np.dot(c_trans[:, index], B_inv), A[:, [i]]) - c_trans[0][i])
     
     entering_index = min(enter.keys(), key=(lambda k: enter[k]))
     
