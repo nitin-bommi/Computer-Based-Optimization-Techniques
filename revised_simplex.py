@@ -77,4 +77,8 @@ while(True):
     #Checking for optimal solution.
     if(enter[entering_index]>0):
         print("Optimal solution reached =", z[0][0])
+        print("Optimal values: ")
+        for i in range(len(index)):
+            if c[index[i]][0] != 0:
+                print("x{a} = {b}".format(a=index[i]+1, b=X[i][0]))
         break
