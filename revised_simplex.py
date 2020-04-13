@@ -15,7 +15,7 @@ c = np.array([[5],[4],[0],[0],[0],[0]])
 c_trans = c.transpose()
 
 #Assigning the number of variables and equations.
-n, m = 6, 4
+(m, n) = A.shape
 
 #List of indices to be taken.
 index =[x for x in range((n-m),n)]
@@ -39,6 +39,11 @@ entering_index = min(enter.keys(), key=(lambda k: enter[k]))
 #Checking for optimal solution.
 if(enter[entering_index]>0):
     print("Optimal solution reached")
+    print("Optimal values: ")
+    for i in range(len(index)):
+        if c[index[i]][0] != 0:
+            print("x{a} = {b}".format(a=index[i]+1, b=round(X[i][0],3)))
+    exit()
 
 while(True):
 
