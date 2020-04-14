@@ -11,27 +11,27 @@ A = np.array([
 b = np.array([[24],[6],[1],[2]])
 c = np.array([[5],[4],[0],[0],[0],[0]])
 
+#Declaring inverse function method-2
 def inverse(A):
-  size = A.shape[0]
-  B = np.identity(size)
-  for x in range(0,size):
-    V = np.dot(B,A[:, x])
-    W = V.copy()
-    item=V.item(x)
-    for y in range(0,size):
-      if item!=0:
-        if y==x:
-          W[y] = 1/item
-        else:
-          W[y] = -V[y]/item
-
+    size = A.shape[0]
+    B = np.identity(size)
+    for x in range(0,size):
+        V = np.dot(B,A[:, x])
+        W = V.copy()
+        item=V.item(x)
+        for y in range(0,size):
+            if item!=0:
+                if y==x:
+                    W[y] = 1/item
+                else:
+                    W[y] = -V[y]/item
     T = B.copy()
     T[x]=np.zeros(size)
     B = T + np.dot(W.reshape(size,1),[B[x]])
   
-  return B
+    return B
   
-  #Finding the transpose.
+#Finding the transpose.
 c_trans = c.transpose()
 
 #Assigning the number of variables and equations.
