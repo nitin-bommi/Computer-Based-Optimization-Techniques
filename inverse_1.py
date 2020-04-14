@@ -1,13 +1,3 @@
-def inverse(A,ent,leav):
-    dim=A.shape[0]
-    A=A.astype('float64')
-    A[leav]=A[leav]/A[leav,ent]
-    for j in range(dim):
-        if(leav!=j):
-            con=A[j,ent]
-            A[j]=A[j]-A[leav]*con
-    return A
-    
 #Importing the libraries.
 import numpy as np
 
@@ -20,6 +10,17 @@ A = np.array([
 ])
 b = np.array([[24],[6],[1],[2]])
 c = np.array([[5],[4],[0],[0],[0],[0]])
+
+#Defining the inverse method-1.
+def inverse(A,entering,leaving):
+    dim=A.shape[0]
+    A=A.astype('float64')
+    A[leaving]=A[leaving]/A[leaving,entering]
+    for j in range(dim):
+        if(leaving!=j):
+            con=A[j,entering]
+            A[j]=A[j]-A[leaving]*con
+    return A
 
 #Finding the transpose.
 c_trans = c.transpose()
@@ -70,11 +71,11 @@ while(True):
             
     leaving_index = min(leave.keys(), key=(lambda k: leave[k]))
     
+    #Finding the index value of leaving variable 
     for i in range(len(index)):
         if(leaving_index==index[i]):
-            leav=i
+            leaving=i
             break
-    print(leav)
     
     #Updating the index list.
     for i,j in enumerate(index):
@@ -82,7 +83,7 @@ while(True):
             index[i]=entering_index
             
     #Updating the matrices.
-    A = inverse(A,entering_index,leav)
+    A = inverse(A,entering_index,leaving)
     B_inv = A[:, n-m:]
     X = np.dot(B_inv, b)
     z = np.dot(c_trans[:, index], X)
