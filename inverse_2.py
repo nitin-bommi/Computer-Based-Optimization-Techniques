@@ -25,9 +25,9 @@ def inverse(A):
                     W[y] = 1/item
                 else:
                     W[y] = -V[y]/item
-    T = B.copy()
-    T[x]=np.zeros(size)
-    B = T + np.dot(W.reshape(size,1),[B[x]])
+        T = B.copy()
+        T[x]=np.zeros(size)
+        B = T + np.dot(W.reshape(size,1),[B[x]])
   
     return B
   
