@@ -33,7 +33,6 @@ for i in range(1, n+1):
     symbs.append('x'+str(i))
     if(i>initial):
         eqns[j]=eqns[j].replace('<=', '+x'+str(i)+'-')      #converting inequalities into equation form by adding slack variables
-        print(eqns[j])
         j+=1
 A, b=   sp.linear_eq_to_matrix(eqns,symbs)          #storing respective values into the matrices A, b, c
 c, rhs=sp.linear_eq_to_matrix([z], symbs)
@@ -92,16 +91,20 @@ if(determine):
     exit()
 
 while(True):
-    
+    count=0
     #num = B_inv * b, den = B_inv * P[i].
     num, den = B_inv * b, B_inv * A[:, [entering_index]]
-    
     #Finding the leaving variable.
     for i in index:
         if int(den[i-(n-m)])>0:
             leave[i] = num[i-(n-m)]/den[i-(n-m)]
-            
-    leaving_index = min(leave.keys(), key=(lambda k: leave[k]))
+        elif(int(den[(i-(n-m))])<=0):
+            count+=1
+    if(count==len(index)):
+        print("Solution is unbounded")
+        break
+    else:
+        leaving_index = min(leave.keys(), key=(lambda k: leave[k]))
     
     #Updating the index list.
     for i,j in enumerate(index):
@@ -124,6 +127,7 @@ while(True):
     for i in range(n):
         if i not in index:
             enter[i] = (((c_trans[:, index] * B_inv) * A[:, [i]])[0] - c_trans[i])
+    
     #Determining whether to use min or max approach
     if(min_or_max=="max"):
         entering_index = min(enter.keys(), key=(lambda k: enter[k]))
