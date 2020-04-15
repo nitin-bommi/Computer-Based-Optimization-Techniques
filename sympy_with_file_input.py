@@ -10,13 +10,18 @@ f = open(os.getcwd()+"\\input1.txt", "r")
 flag =0
 lines =[]
 f = open("input1.txt", "r")
+count1=0
 #The following code makes stores the data starting from min or max ignoring rest of the multiline comments
 for line in f:
-    if(line.lower()[:3]=='min' or line.lower()[:3]=='max'):
-        flag=1
     if(flag==1):
         lines.append(line)
+    if(line.strip()=="***"):
+        count1+=1
+    if(count1==2):
+        flag=1
+
 lines1 = [lines[i].strip() for i in range(len(lines)) if(lines[i].strip()!='')]
+
 no_constraints = len(lines1)-2          #Calculates no_of_constraints
 min_or_max = lines1[0].lower()[:3]
 z = lines1[1].replace(' ', '')
