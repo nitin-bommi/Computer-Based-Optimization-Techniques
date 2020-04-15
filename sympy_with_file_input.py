@@ -7,25 +7,33 @@ iteration = 1
 #Declaring the matrices.
 
 f = open(os.getcwd()+"\\input1.txt", "r")
-eqns=[]
-no_constraints = f.readline()
-no_constraints = int(no_constraints.rstrip())
-min_or_max = f.readline().lower()[:3]
-z = f.readline()
-z= z.rstrip()       #removes \n from the end
-z = z.replace(" ", "") #removesall the spaces
+flag =0
+lines =[]
+f = open("input1.txt", "r")
+#The following code makes stores the data starting from min or max ignoring rest of the multiline comments
+for line in f:
+    if(line.lower()[:3]=='min' or line.lower()[:3]=='max'):
+        flag=1
+    if(flag==1):
+        lines.append(line)
+lines1 = [lines[i].strip() for i in range(len(lines)) if(lines[i].strip()!='')]
+no_constraints = len(lines1)-2          #Calculates no_of_constraints
+min_or_max = lines1[0].lower()[:3]
+z = lines1[1].replace(' ', '')
 z=z.replace('z=', "")
 initial = z.count('x')
 n = no_constraints+initial
-for i in range(0, no_constraints):
-    eqns.append(f.readline().rstrip())
+eqns = lines1[2:]
+for i in range(no_constraints):
+    eqns[i] = eqns[i].replace(' ','')    #removes all the spaces
 symbs=[]
 j=0
 for i in range(1, n+1):
-    globals()['x%s' % i]=symbols('x'+str(i))
+    globals()['x%s' % i]=symbols('x'+str(i))     #creates the symbols to be used as variables
     symbs.append('x'+str(i))
     if(i>initial):
-        eqns[j]=eqns[j].replace('<=', '+x'+str(i)+'-')  #converts given inequalities into equation form
+        eqns[j]=eqns[j].replace('<=', '+x'+str(i)+'-')      #converting inequalities into equation form by adding slack variables
+        print(eqns[j])
         j+=1
 A, b=   sp.linear_eq_to_matrix(eqns,symbs)          #storing respective values into the matrices A, b, c
 c, rhs=sp.linear_eq_to_matrix([z], symbs)
