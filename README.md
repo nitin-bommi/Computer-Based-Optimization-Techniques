@@ -16,4 +16,9 @@
 
 I request all the collaborators to be active and respond well to the work. Let us complete the work in 3 days.
 
+To find the runtime of the code, use
+```python
+Time python3 test.py
+```
+
 *If you have any doubts or issues while running the code, create a new issue.*
