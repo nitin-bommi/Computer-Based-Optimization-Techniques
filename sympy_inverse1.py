@@ -1,16 +1,16 @@
 #Defining the inverse method-1.
-def inverse(A,entering,leaving):
-    dim=A.shape[0]
-    X = A.row(leaving)/A.row(leaving)[entering]
-    A.row_del(leaving)
-    A = A.row_insert(leaving,X)
+def inverse(mat,entering,leaving):
+    dim=mat.shape[0]
+    X = mat.row(leaving)/mat.row(leaving)[entering]
+    mat.row_del(leaving)
+    mat = mat.row_insert(leaving,X)
     for j in range(dim):
         if(leaving!=j):
-            con=A.row(j)[entering]
-            X = A.row(j)-A.row(leaving)*con
-            A.row_del(j)
-            A = A.row_insert(j,X)
-    return A
+            con=mat.row(j)[entering]
+            X = mat.row(j)-mat.row(leaving)*con
+            mat.row_del(j)
+            mat = mat.row_insert(j,X)
+    return mat
 
 
 from sympy import linear_eq_to_matrix, symbols, Matrix, init_printing, pprint
@@ -70,7 +70,7 @@ c_trans = c.T
 
 #List of indices to be taken.
 index =[x for x in range((n-m),n)]
-print(index)
+
 #Constructing the required matrices.
 B = A[:, index]
 B_inv = B ** -1
@@ -88,7 +88,8 @@ enter, leave = {}, {}
 for i in range(n):
     if i not in index:
         enter[i] = (((c_trans[:, index] * B_inv) * A[:, [i]])[0] - c_trans[i])
- #Determining whether to use min or max approach
+        
+#Determining whether to use min or max approach
 if(min_or_max=="max"):
     entering_index = min(enter.keys(), key=(lambda k: enter[k]))
 else:
@@ -108,13 +109,13 @@ if(determine):
         if c[index[i]][0] != 0:
             print("x{a} = {b}".format(a=index[i]+1, b=round(X[i][0],3)))
     exit()
-    
+
+A1 = A[:,:]
 while(True):
     count=0
     #num = B_inv * b, den = B_inv * P[i].
     num, den = B_inv * b, B_inv * A[:, [entering_index]]
     
-    print(index)
     #Finding the leaving variable.
     for i in index:
         if int(den[i-(n-m)])>0:
@@ -144,23 +145,20 @@ while(True):
     iteration += 1
             
     #Updating the matrices.
-    print(entering_index,leaving)
-    A = inverse(A,entering_index,leaving)
-    pprint(A)
-    B_inv = A[:, n-m:]
+    A1 = inverse(A1,entering_index,leaving)
+    B_inv = A1[:, n-m:]
     X = B_inv * b
     z = c_trans[:, index] * X
     enter, leave = {}, {}
     
     print("\nIteration:",iteration)
-    pprint(B_inv)
+    pprint(A)
     
     #Finding the entering variable.
     for i in range(n):
         if i not in index:
             enter[i] = (((c_trans[:, index] * B_inv) * A[:, [i]])[0] - c_trans[i])
-    
-    print(enter)
+   
     #Determining whether to use min or max approach
     if(min_or_max=="max"):
         entering_index = min(enter.keys(), key=(lambda k: enter[k]))
