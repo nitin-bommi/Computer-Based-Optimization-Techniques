@@ -117,7 +117,7 @@ while(True):
             index[i]=entering_index
             
     iteration += 1
-            
+   
     #Updating the matrices.
     B = A[:, index] 
     B_inv = B ** -1
@@ -134,6 +134,7 @@ while(True):
             enter[i] = (((c_trans[:, index] * B_inv) * A[:, [i]])[0] - c_trans[i])
     
     #Determining whether to use min or max approach
+
     if(min_or_max=="max"):
         entering_index = min(enter.keys(), key=(lambda k: enter[k]))
     else:
@@ -142,9 +143,10 @@ while(True):
     #Checking for optimal solution.
     #Determining whether to use min or max approach
     if(min_or_max=="max"):
-        determine = enter[entering_index]>0
+        determine = enter[entering_index]>=0
     else:
-        determine = enter[entering_index]<0
+        determine = enter[entering_index]<=0
+    
     if(determine):
         print("\nOptimal solution reached =", z[0])
         print("Optimal values: ")
