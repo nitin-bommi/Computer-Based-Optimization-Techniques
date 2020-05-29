@@ -105,9 +105,9 @@ else:
 #Checking for optimal solution.
 #Determining whether to use min or max approach
 if(min_or_max=="max"):
-    determine = enter[entering_index]>0
+    determine = enter[entering_index]>=0
 else:
-    determine = enter[entering_index]<0
+    determine = enter[entering_index]<=0
 if(determine):
     print("\nOptimal solution reached")
     print("Optimal values: ")
@@ -173,9 +173,9 @@ while(True):
     #Checking for optimal solution.
     #Determining whether to use min or max approach
     if(min_or_max=="max"):
-        determine = enter[entering_index]>0
+        determine = enter[entering_index]>=0
     else:
-        determine = enter[entering_index]<0
+        determine = enter[entering_index]<=0
     if(determine):
         print("\nOptimal solution reached =", z[0])
         print("Optimal values: ")
