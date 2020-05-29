@@ -12,14 +12,14 @@ def inverse(mat,entering,leaving):
             mat = mat.row_insert(j,X)
     return mat
 
-
+#Importing the required libraries.
 from sympy import linear_eq_to_matrix, symbols, Matrix, init_printing, pprint
 import sympy as sp
 import os
 iteration = 1
 
 #Declaring the matrices.
-
+#Reading the file.
 f = open(os.getcwd()+"\\input1.txt", "r")
 flag =0
 lines =[]
@@ -79,7 +79,7 @@ z = c_trans[:, index] * X
 
 print('\nB:')
 print("\nIteration:",iteration)
-pprint(B_inv)
+pprint(A)
 
 #Using dictiories to find the key - index, value - value to find the entering and leaving variables.
 enter, leave = {}, {}
@@ -129,7 +129,6 @@ while(True):
     else:
         leaving_index = min(leave.keys(), key=(lambda k: leave[k]))
     
-    print(leaving_index)
     
     #Finding the index value of leaving variable 
     for i in range(len(index)):
@@ -152,7 +151,7 @@ while(True):
     enter, leave = {}, {}
     
     print("\nIteration:",iteration)
-    pprint(A)
+    pprint(A1)
     
     #Finding the entering variable.
     for i in range(n):
