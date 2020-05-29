@@ -26,6 +26,21 @@ Once the file is read, it checks for the lines below the final '\*\*\*' and then
 
 With the help of SymPy, the out is formatted in matrix form. 
 
+When the input is taken as:
+
+Maximize:
+z = 5x<sub>1</sub>+4x<sub>2</sub>
+      
+s.t.
+
+6x<sub>1</sub> + 4x<sub>2</sub> &le; 24
+
+x<sub>1</sub> + 2x<sub>2</sub> &le; 6
+
+-x<sub>1</sub> + x<sub>2</sub> &le; 1
+
+x<sub>2</sub> &le; 2
+
 The matrices A, b, c are printed as:
 
 <img src="https://github.com/Yashi1011/Computer-Based-Optimization-Techniques/blob/master/samples/abc.PNG" height = 500>
