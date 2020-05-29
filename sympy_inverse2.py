@@ -1,3 +1,4 @@
+#Defining inverse method.
 def inverse(A):
     size=A.shape[0]
     B=eye(size)
@@ -17,6 +18,7 @@ def inverse(A):
         B=T.row_insert(x,zeros(1,size))+(W*B.row(x))
     return B
 
+#Importing the required libraries.
 from sympy import *
 import sympy as sp
 import os
@@ -24,11 +26,13 @@ iteration = 1
 
 #Declaring the matrices.
 
+#Reading the file.
 f = open(os.getcwd()+"\\input1.txt", "r")
 flag =0
 lines =[]
 f = open("input1.txt", "r")
 count1=0
+
 #The following code makes stores the data starting from min or max ignoring rest of the multiline comments
 for line in f:
     if(flag==1):
@@ -74,7 +78,7 @@ c_trans = c.T
 
 #List of indices to be taken.
 index =[x for x in range((n-m),n)]
-print(index)
+
 #Constructing the required matrices.
 B = A[:, index]
 B_inv = B ** -1
