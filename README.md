@@ -27,8 +27,10 @@ Once the file is read, it checks for the lines below the final '\*\*\*' and then
 With the help of SymPy, the out is formatted in matrix form. 
 
 The matrices A, b, c are printed as:
+
 <img src="https://github.com/Yashi1011/Computer-Based-Optimization-Techniques/blob/master/samples/abc.PNG" height = 500>
 
-After each iteration, the matrices are printed:
+The output and intermediate matrix after each iteration is printed:
+
 <img src="https://github.com/Yashi1011/Computer-Based-Optimization-Techniques/blob/master/samples/output.PNG" height = 500>
 
