@@ -94,14 +94,13 @@ c_trans = c.T
 index =[x for x in range((n-m),n)]
 
 # Constructing the required matrices.
-B = A[:, index]
-B_inv = B ** -1
+B_inv = A[:, n-m:]
 X = B_inv * b
 z = c_trans[:, index] * X
 
 print('\nB:')
 print("\nIteration:",iteration)
-pprint(B)
+pprint(A)
 
 # Using dictiories to find the key - index, value - value to find the entering and leaving variables.
 enter, leave = {}, {}
