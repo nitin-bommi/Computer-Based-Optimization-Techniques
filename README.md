@@ -22,3 +22,13 @@ The problem to be solved has to be appended below the final '\*\*\*'. And it sho
 
 Once the file is read, it checks for the lines below the final '\*\*\*' and then converts that into matrices form by a library ```linear_eq_to_matrix``` on which computations are performed. This library takes input in the form of equations and converts them into matrices of coefficients.
 
+### Output 
+
+With the help of SymPy, the out is formatted in matrix form. 
+
+The matrices A, b, c are printed as:
+<img src="https://github.com/Yashi1011/Computer-Based-Optimization-Techniques/blob/master/samples/abc.PNG" height = 500>
+
+After each iteration, the matrices are printed:
+<img src="https://github.com/Yashi1011/Computer-Based-Optimization-Techniques/blob/master/samples/output.PNG" height = 500>
+
