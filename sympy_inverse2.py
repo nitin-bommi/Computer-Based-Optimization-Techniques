@@ -1,3 +1,11 @@
+#Importing the required libraries.
+from sympy import *
+import sympy as sp
+import os
+import time
+
+start = time.time()
+
 #Defining inverse method.
 def inverse(A):
     size=A.shape[0]
@@ -18,16 +26,11 @@ def inverse(A):
         B=T.row_insert(x,zeros(1,size))+(W*B.row(x))
     return B
 
-#Importing the required libraries.
-from sympy import *
-import sympy as sp
-import os
 iteration = 1
 
 #Declaring the matrices.
 
 #Reading the file.
-f = open(os.getcwd()+"\\input1.txt", "r")
 flag =0
 lines =[]
 f = open("input1.txt", "r")
@@ -61,6 +64,8 @@ for i in range(1, n+1):
     if(i>initial):
         eqns[j]=eqns[j].replace('<=', '+x'+str(i)+'-')      #converting inequalities into equation form by adding slack variables
         j+=1
+
+symbs = symbols(symbs)
 A, b=   sp.linear_eq_to_matrix(eqns,symbs)          #storing respective values into the matrices A, b, c
 c, rhs=sp.linear_eq_to_matrix([z], symbs)
 c = c.T
@@ -174,3 +179,7 @@ while(True):
             if c[index[i]] != 0:
                 print("x{a} = {b}".format(a=index[i]+1, b=round(X[i],3)))
         break
+
+end = time.time()
+
+print("Time: " + str((end-start)*1000) + "ms")
