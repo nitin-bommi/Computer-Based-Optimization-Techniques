@@ -98,7 +98,7 @@ B_inv = A[:, n-m:]
 X = B_inv * b
 z = c_trans[:, index] * X
 
-print('\nB:')
+print('\nA:')
 print("\nIteration:",iteration)
 pprint(A)
 
