@@ -16,7 +16,7 @@ The time is started after all the libraries are imported and before the function
 The input file can be viewed [here.](https://github.com/Yashi1011/Computer-Based-Optimization-Techniques/blob/master/input.txt)
 
 The text under '\*\*\*' is viewed as comment and it represents the format of the input with some examples (along with solutions). 
-The code checkes for the type of the problem (i.e., minimisation or maximisation) and then computes the result. 
+The code checks for the type of the problem (i.e., minimisation or maximisation) and then computes the result. 
 
 The problem to be solved has to be appended below the final '\*\*\*'. And it should contain the type of the problem and the constraints.
 
@@ -24,7 +24,7 @@ Once the file is read, it checks for the lines below the final '\*\*\*' and then
 
 ### Output 
 
-With the help of SymPy, the out is formatted in matrix form. 
+With the help of SymPy, the output is formatted in matrix form. 
 
 When the input is taken as:
 
