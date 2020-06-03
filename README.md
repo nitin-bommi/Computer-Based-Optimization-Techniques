@@ -49,3 +49,59 @@ The output and intermediate matrix after each iteration is printed:
 
 <img src="https://github.com/Yashi1011/Computer-Based-Optimization-Techniques/blob/master/samples/output.PNG" height = 500>
 
+### Time complexity
+
+When we found the inverse using both the functions on the same matrix. The following results were obtained:
+
++ Elementary method:
+
+```python
+def inverse1(mat,entering,leaving):
+    
+    dim = mat.shape[0]
+    
+    X = mat.row(leaving)/mat.row(leaving)[entering]
+    mat.row_del(leaving)
+    mat = mat.row_insert(leaving,X)
+    
+    for j in range(dim):
+        if(leaving!=j):
+            con=mat.row(j)[entering]
+            X = mat.row(j)-mat.row(leaving)*con
+            mat.row_del(j)
+            mat = mat.row_insert(j,X)
+            
+    return mat
+```
+
+The execution time was `0.99778175 ms`
+
++ Gauss Jordan method:
+
+```python
+def inverse2(A):
+    
+    size = A.shape[0]
+    
+    B = eye(size)
+    
+    for x in range(0,size):
+        V = B*A.col(x)
+        W = V*1
+        item = V[x]
+        for y in range(0,size):
+            if item != 0:
+                if y == x:
+                    W[y] = 1/item
+                else:
+                    W[y] =- V[y]/item
+                    
+        T = B*1
+        T.row_del(x)
+        T = T*1
+        B = T.row_insert(x,zeros(1,size)) + (W*B.row(x))
+        
+    return B
+```
+
+The execution time was `3.027201 ms`
