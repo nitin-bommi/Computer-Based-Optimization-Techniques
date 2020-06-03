@@ -74,7 +74,7 @@ def inverse1(mat,entering,leaving):
     return mat
 ```
 
-The execution time was `0.99778175 ms`
+The execution time was `0.9977817 ms`
 
 + Gauss Jordan method:
 
@@ -105,3 +105,7 @@ def inverse2(A):
 ```
 
 The execution time was `3.027201 ms`
+
+i.e., Elementary method is ~3.1 times faster.
+
+Justification - In elementary method, we used a single for loop whereas in gauss jordan method we used two for loops. (O(n) vs O(n<sup>2</sup>))
